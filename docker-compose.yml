@@ -1,0 +1,21 @@
+services:
+
+  postgres:
+    image: postgres:17
+    container_name: dataforge-postgres
+
+    environment:
+      POSTGRES_DB: dataforge_oltp
+      POSTGRES_USER: dataforge
+      POSTGRES_PASSWORD: dataforge_dev_password
+
+    ports:
+      - "5432:5432"
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
